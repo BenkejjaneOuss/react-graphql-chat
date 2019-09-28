@@ -10,13 +10,13 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 import App from './components/App'
 
-// Paste your own service ID here
-const serviceId = `ck129nhui87ak0194z1hqulri`
+// Paste your own project ID here
+const projectId = `__YOUR_PROJECT_ID__`
 
-const httpLink = createHttpLink({ uri: `https://api.graph.cool/simple/v1/${serviceId}` })
+const httpLink = createHttpLink({ uri: `https://api.graph.cool/simple/v1/${projectId}` })
 
 const wsLink = new WebSocketLink({
-  uri: `wss://subscriptions.graph.cool/v1/${serviceId}`,
+  uri: `wss://subscriptions.graph.cool/v1/${projectId}`,
   options: {
     reconnect: true
   }
