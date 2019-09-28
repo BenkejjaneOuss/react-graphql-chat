@@ -13,8 +13,6 @@ A simple Realtime Chat Application with :
 git clone https://github.com/BenkejjaneOuss/react-graphql-chat.git
 cd react-graphql-chat
 ```
-
-
 ### 2. Deploy the GraphQL server
 
 You're now ready to put your Graphcool service into production! Navigate into the `server` directory and [deploy](https://docs-next.graph.cool/reference/graphcool-cli/commands-aiteerae6l#graphcool-deploy) the service:
@@ -31,21 +29,23 @@ Save the ID of your service, you'll need it in the next step.
 > **Note**: You can now test your GraphQL API inside a GraphQL playground. Simply type the `graphcool playground` command and start sending queries and mutations.
 
   
-### 3. Connect the app with your GraphQL API
+### 3. Connect your App
 
-Paste your service ID to `./src/index.js` as the value for the currently empty `serviceId` variable:
+In `./src/index.js` you need to set the variable `projectId` which is then used in `graphQLEndpoint` and `subscriptionsUrl`. You can access your project ID by using the `graphcool info` command inside the `graphcool` directory. 
 
 ```js
-const serviceId = `__YOUR_SERVICE_ID__`
+const projectId = `__YOUR_PROJECT_ID__`
 ```
 
-> **Note**: You can always get access to your service ID by running the `graphcool info` command.
 
+### 4. Run the App 🚀
 
-### 4. Install dependencies & run locally
-
-You're done configuring the example application. 
+That's it, you can now start the app:
 
 ```sh
+cd ../
 npm install
-npm start # open browser with: http://localhost:3000
+npm start
+```
+
+Go to **[http://localhost:3000](http://localhost:3000)** in your browser to start chatting 💬
