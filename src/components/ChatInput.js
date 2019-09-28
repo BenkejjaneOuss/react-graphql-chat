@@ -4,8 +4,10 @@ class ChatInput extends Component {
 
   render() {
     return (
-      <div>
+      <div className="type_msg">
+        <div className="input_msg_write">
           <input
+            className="write_msg"
             placeholder='Enter your chat message...'
             type='text'
             value={this.props.message}
@@ -18,6 +20,7 @@ class ChatInput extends Component {
               }
             }}
           />
+        </div>
       </div>
     )
   }

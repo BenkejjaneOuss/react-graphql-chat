@@ -3,14 +3,17 @@ import { withApollo, graphql } from 'react-apollo'
 import * as compose from 'lodash.flowright'
 import gql from 'graphql-tag'
 import generateUsername from 'sillyname'
+import Chat from './Chat'
+import 'bootstrap/dist/css/bootstrap.css'
+import '../styles/styles.css'
 
 const createUser = gql`
-    mutation createUser($name: String!) {
-        createUser(name: $name) {
-            id
-            name
-        }
+  mutation createUser($name: String!) {
+    createUser(name: $name) {
+        id
+        name
     }
+  }
 `
 
 const REACT_GRAPHQL_CHAT_ID_KEY = 'REACT_GRAPHQL_CHAT_ID'
@@ -22,15 +25,11 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    
-    
     const userId = localStorage.getItem(REACT_GRAPHQL_CHAT_ID_KEY)
-
     // Check if user already exists
     if (!Boolean(userId)) {
       this._createNewUser()
-    }
-    else {
+    } else {
       this._updateExistingUser(userId)
     }
   }
@@ -49,16 +48,17 @@ class App extends Component {
   }
 
   _updateExistingUser = async (userId) => {
-
     this.setState({
       userId: userId
     })
-
   }
 
   render() {
     return (
-      <div>
+      <div className="messaging">
+        <Chat
+          userId={this.state.userId}
+        />
       </div>
     )
   }

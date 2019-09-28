@@ -68,7 +68,6 @@ class Chat extends Component {
       },
       onError: (err) => console.error(err),
     })
-
   }
 
   componentDidUpdate(prevProps) {
@@ -79,12 +78,14 @@ class Chat extends Component {
 
   render() {
     return (
-      <div>
+      <div className='inbox_msg'>
+        <div className='mesgs'>
           {this.props.allMessagesQuery.loading &&
             <div className='Container'>Loading..</div>
           }
           <ChatMessages
             messages={this.props.allMessagesQuery.allMessages || []}
+            userId={this.props.userId}
             endRef={this._endRef}
           />
           {Boolean(this.props.userId) &&
@@ -95,6 +96,7 @@ class Chat extends Component {
             onSend={this._onSend}
           />
           }
+        </div>
       </div>
     )
   }
